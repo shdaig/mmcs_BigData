@@ -1,0 +1,30 @@
+db.courses.aggregate([
+  {
+    $addFields: {
+      endCourse: {
+        $dateFromString: {
+          dateString: {
+            $concat: [
+              { $substr: ["$endDate", 6, 4] },
+              "-",
+              { $substr: ["$endDate", 3, 2] },
+              "-",
+              { $substr: ["$endDate", 0, 2] },
+              "T00:00:00Z"
+            ] 
+          } 
+        }
+      }
+    }
+  },
+  {
+    $match: {
+      $expr: { $gt: ["$$NOW", "$endCourse"] }
+    }
+  },
+  {
+    $group: {
+      _id: "$name"
+    }
+  }
+]);

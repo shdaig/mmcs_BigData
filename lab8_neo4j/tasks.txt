@@ -1,0 +1,27 @@
+1.
+MATCH (u:User)-[:SUB]->(c:Course)
+RETURN c.name AS course_name, AVG(date().year - u.birthdate.year) AS average_age
+
+2.
+MATCH (u:User)-[:SUB]->(c:Course)
+WITH c, 
+COUNT(CASE WHEN u.corporate_client = false THEN 1 ELSE null END) AS physical_count, 
+COUNT(CASE WHEN u.corporate_client = true THEN 1 ELSE null END) AS corporate_count
+WHERE physical_count > corporate_count
+RETURN c.name AS course_name, physical_count, corporate_count, physical_count * 100 / (physical_count + corporate_count) AS percentage
+
+3.
+MATCH (c:Course)
+WHERE datetime() > c.end_date
+RETURN c.name AS course_name, c.start_date AS start_date, c.end_date AS end_date
+
+4.
+MATCH (u:User)-[:SUB]->(c:Course)
+WHERE datetime() < c.start_date
+RETURN c.name AS course_name, c.start_date AS start_date, COUNT(u) AS user_count
+
+5.
+MATCH (u:User)-[:SUB]->(c:Course)
+WHERE datetime() >= c.start_date
+WITH c, COUNT(u) AS user_count, c.price AS course_price
+RETURN c.name AS course_name, user_count * course_cost AS total_cost

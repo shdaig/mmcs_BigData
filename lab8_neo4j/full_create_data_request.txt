@@ -1,0 +1,106 @@
+CREATE
+(U001:User {
+  	full_name:'Tilda Swinton',
+    birthdate:date('1990-10-05'),
+    phone:'+13859372865',
+    corporate_client:false,
+    country:'UK',
+    city:'London',
+    online:false
+}),
+(U002:User {
+  	full_name:'Frances McDormand',
+    birthdate:date('1997-06-23'),
+    phone:'+13859573905',
+    corporate_client:false,
+    country:'USA',
+    city:'New York',
+    online:false
+}),
+(U003:User {
+  	full_name:'Bill Murray',
+    birthdate:date('1991-09-21'),
+    phone:'+79859572314',
+    corporate_client:true,
+    country:'Russia',
+    city:'Rosov-on-Don',
+    online:false
+}),
+(U004:User {
+  	full_name:'Timothee Chalamet',
+    birthdate:date('1995-12-27'),
+    phone:'+147395720573',
+    corporate_client:true,
+    country:'USA',
+    city:'Pittsburgh',
+    online:false
+}),
+(U005:User {
+  	full_name:'Adrien Brody',
+    birthdate:date('2000-04-14'),
+    phone:'+19652970265',
+    corporate_client:false,
+    country:'Algeria',
+    city:'Algeria',
+    online:false
+}),
+(U006:User {
+  	full_name:'Jeffrey Wright',
+    birthdate:date('1999-05-27'),
+    phone:'+15238265826',
+    corporate_client:true,
+    country:'USA',
+    city:'Washington',
+    online:false
+}),
+(U007:User {
+  	full_name:'Lyna Khoudri',
+    birthdate:date('2001-03-03'),
+    phone:'+158265926492',
+    corporate_client:false,
+    country:'USA',
+    city:'Pittsburgh',
+    online:false
+}),
+(NNDL:Course {
+	name:'Neural Networks and Deep Learning',
+    duration:4,
+    start_date:datetime('2023-03-20T00:00:00'),
+    end_date:datetime('2023-04-17T00:00:00'),
+    description:'You will be familiar with the significant technological trends driving the rise of deep learning; build, train, and apply fully connected deep neural networks; implement efficient (vectorized) neural networks; identify key parameters in a neural network’s architecture; and apply deep learning to your own applications.',
+    lecturer:'Andrew Ng',
+    price:900
+}),
+(SMLP:Course {
+	name:'Structuring Machine Learning Projects',
+    duration:4,
+    start_date:datetime('2023-04-24T00:00:00'),
+    end_date:datetime('2023-05-22T00:00:00'),
+    description:'You will be able to diagnose errors in a machine learning system; prioritize strategies for reducing errors; understand complex ML settings, such as mismatched training/test sets, and comparing to and/or surpassing human-level performance; and apply end-to-end learning, transfer learning, and multi-task learning.',
+    lecturer:'Andrew Ng',
+    price:750
+}),
+(CNN:Course {
+	name:'Convolutional Neural Networks',
+    duration:4,
+    start_date:datetime('2023-05-29T00:00:00'),
+    end_date:datetime('2023-06-26T00:00:00'),
+    description:'You will be able to build a convolutional neural network, including recent variations such as residual networks; apply convolutional networks to visual detection and recognition tasks; and use neural style transfer to generate art and apply these algorithms to a variety of image, video, and other 2D or 3D data.',
+    lecturer:'Andrew Ng',
+    price:850
+}),
+(U001)-[:SUB {role:'User'}]->(NNDL),
+(U001)-[:SUB {role:'User'}]->(SMLP),
+(U001)-[:SUB {role:'User'}]->(CNN),
+(U002)-[:SUB {role:'User'}]->(NNDL),
+(U002)-[:SUB {role:'User'}]->(CNN),
+(U003)-[:SUB {role:'User'}]->(SMLP),
+(U003)-[:SUB {role:'User'}]->(CNN),
+(U004)-[:SUB {role:'User'}]->(NNDL),
+(U004)-[:SUB {role:'User'}]->(SMLP),
+(U005)-[:SUB {role:'User'}]->(NNDL),
+(U005)-[:SUB {role:'User'}]->(SMLP),
+(U005)-[:SUB {role:'User'}]->(CNN),
+(U006)-[:SUB {role:'User'}]->(CNN),
+(U007)-[:SUB {role:'User'}]->(NNDL),
+(U007)-[:SUB {role:'User'}]->(CNN)

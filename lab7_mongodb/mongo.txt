@@ -1,0 +1,19 @@
+db.courses.insertMany([
+ 	{ "course_id": "01", "name": "web-design course", "duration": 20, "startDate": "22.06.2023", "endDate": "28.06.2023", "description": "Введение в веб-дизайн", "lecturer": "Савельев Игорь Михайолович", "cost": 5000 },
+	{ "course_id": "02", "name": "node.js course", "duration": 100, "startDate": "01.02.2023", "endDate": "28.02.2023", "description": "Курс по Node.js", "lecturer": "Громов Василий Степанович", "cost": 20000 },
+	{ "course_id": "03", "name": "big data course", "duration": 150, "startDate": "10.05.2023", "endDate": "05.06.2023", "description": "Курс по большим данным", "lecturer": "Ткачев Семен Евгеньевич", "cost": 20000 },
+]);
+
+db.users.insertMany([ 
+	{ "course_id": "01", "full_name": "Иванов Иван Иванович", "birth_date": "01.04.1990", "phone": "+79289996655", "corporate_client": false, "country": "Россия", "city": "Москва", "online": true, "wishes": "После курса хочу получать миллион рублей в наносекунду" }, 
+	{ "course_id": "01", "full_name": "Голованов Федор Иванович", "birth_date": "08.04.1985", "phone": "+79284567890", "corporate_client": true, "country": "Россия", "city": "Санкт-Петербург", "online": true, "wishes": "Побольше практики, пожалуйста" }, 
+	{ "course_id": "02", "full_name": "Смирнов Василий Иванович", "birth_date": "03.05.1997", "phone": "+79997897979", "corporate_client": false, "country": "Россия", "city": "Москва", "online": true, "wishes": "Только онлайн" }, 
+	{ "course_id": "02", "full_name": "Грузднев Алексей Игнатович", "birth_date": "25.08.2001", "phone": "+79289289289", "corporate_client": true, "country": "Россия", "city": "Москва", "online": true, "wishes": "Могу только ночбю проходить" }, 
+	{ "course_id": "02", "full_name": "Северный Константин Соболевич", "birth_date": "04.08.1993", "phone": "+79281113333", "corporate_client": true, "country": "Россия", "city": "Москва", "online": true, "wishes": "Нет" }, 
+	{ "course_id": "02", "full_name": "Знакомов Роман Романович", "birth_date": "22.10.1987", "phone": "+79289999999", "corporate_client": false, "country": "Россия", "city": "Москва", "online": true, "wishes": "Если не успею пройти?" }, 
+	{ "course_id": "02", "full_name": "Незнакомов Сергей Романович", "birth_date": "10.01.1979", "phone": "+79281231231", "corporate_client": false, "country": "Россия", "city": "Москва", "online": true, "wishes": "Всё хорошо, спасибо за курс" },
+ 	{ "course_id": "02", "full_name": "Телефонов Измаил Иванович", "birth_date": "08.02.1993", "phone": "+79282828282", "corporate_client": false, "country": "Россия", "city": "Москва", "online": true, "wishes": "Нет" }, 
+	{ "course_id": "03", "full_name": "Смотров Глеб Никитич", "birth_date": "09.09.1993", "phone": "+79289879898", "corporate_client": false, "country": "Россия", "city": "Москва", "online": true, "wishes": "Нет" }, 
+	{ "course_id": "03", "full_name": "Калюжнов Иван Федорович", "birth_date": "19.05.2005", "phone": "+79281111112", "corporate_client": false, "country": "Россия", "city": "Москва", "online": true, "wishes": "Нет" }, 
+	{ "course_id": "03", "full_name": "Измаилов Степан Романович", "birth_date": "03.06.1997", "phone": "+79286565656", "corporate_client": true, "country": "Россия", "city": "Москва", "online": true, "wishes": "Нет" },
+]);

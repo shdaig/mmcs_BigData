@@ -1,0 +1,31 @@
+db.courses.aggregate([
+  {
+    $addFields: {
+      startCourse: {
+        $dateFromString: {
+          dateString: {
+            $concat: [
+              { $substr: ["$startDate", 6, 4] },
+              "-",
+              { $substr: ["$startDate", 3, 2] },
+              "-",
+              { $substr: ["$startDate", 0, 2] },
+              "T00:00:00Z"
+            ] 
+          } 
+        }
+      }
+    }
+  },
+  {
+    $match: {
+      $expr: { $gt: ["$$NOW", "$startCourse"] }
+    }
+  },
+  {
+    $group: {
+      _id: null,
+      sum: { $sum: "$cost" } 
+    }
+  }
+]);

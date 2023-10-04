@@ -1,0 +1,40 @@
+db.courses.aggregate([
+  {
+    $lookup: {
+      from: "users",
+      localField: "course_id",
+      foreignField: "course_id",
+      as: "users"
+    }
+  },
+  {
+    $addFields: {
+      startCourse: {
+        $dateFromString: {
+          dateString: {
+            $concat: [
+              { $substr: ["$startDate", 6, 4] },
+              "-",
+              { $substr: ["$startDate", 3, 2] },
+              "-",
+              { $substr: ["$startDate", 0, 2] },
+              "T00:00:00Z"
+            ] 
+          } 
+        }
+      },
+      count_clients: { $sum: { $size: "$users" } }
+    }
+  },
+  {
+    $match: {
+      $expr: { $lt: ["$$NOW", "$startCourse"] }
+    }
+  },
+  {
+    $group: {
+      _id: "$name",
+      "count_clients": { $first: "$count_clients" } 
+    }
+  }
+]);

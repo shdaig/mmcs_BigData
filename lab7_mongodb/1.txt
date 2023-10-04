@@ -1,0 +1,45 @@
+db.users.aggregate([
+  {
+    $addFields: {
+      birthDate: {
+        $dateFromString: {
+          dateString: {
+            $concat: [
+              { $substr: ["$birth_date", 6, 4] },
+              "-",
+              { $substr: ["$birth_date", 3, 2] },
+              "-",
+              { $substr: ["$birth_date", 0, 2] },
+              "T00:00:00Z"
+            ]
+          }
+        }
+      }
+    }
+  },
+  {
+    $addFields: {
+      age: {
+        $divide: [
+	  { $subtract: [ "$$NOW", "$birthDate" ] },
+	  1000*60*60*24*365
+        ]
+      }
+    }           
+  },
+  {
+    $lookup: {
+      from: "courses",
+      localField: "course_id",
+      foreignField: "course_id",
+      as: "courses"
+    }
+  },
+  {
+    $group: {
+      _id: "$course_id",
+      courseName: { $first: "$courses.name" },
+      averageAge: { $avg: "$age" }
+    }
+  }
+])

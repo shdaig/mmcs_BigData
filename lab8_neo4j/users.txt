@@ -1,0 +1,93 @@
+CREATE
+(U001:User {
+  	full_name:'Tilda Swinton',
+    birthdate:date('1990-10-05'),
+    phone:'+13859372865',
+    corporate_client:false,
+    country:'UK',
+    city:'London',
+    online:false
+}),
+
+
+CREATE (U001)-[:SUB {role:'User'}]->(NNDL)
+CREATE (U001)-[:SUB {role:'User'}]->(SMLP)
+CREATE (U001)-[:SUB {role:'User'}]->(CNN)
+
+CREATE (U002:User {
+  	full_name:'Frances McDormand',
+    birthdate:date('1997-06-23'),
+    phone:'+13859573905',
+    corporate_client:false,
+    country:'USA',
+    city:'New York',
+    online:false
+})
+
+CREATE (U002)-[:SUB {role:'User'}]->(NNDL)
+CREATE (U002)-[:SUB {role:'User'}]->(CNN)
+
+CREATE (U003:User {
+  	full_name:'Bill Murray',
+    birthdate:date('1991-09-21'),
+    phone:'+79859572314',
+    corporate_client:true,
+    country:'Russia',
+    city:'Rosov-on-Don',
+    online:false
+})
+
+CREATE (U003)-[:SUB {role:'User'}]->(SMLP)
+CREATE (U003)-[:SUB {role:'User'}]->(CNN)
+
+CREATE (U004:User {
+  	full_name:'Timothee Chalamet',
+    birthdate:date('1995-12-27'),
+    phone:'+147395720573',
+    corporate_client:true,
+    country:'USA',
+    city:'Pittsburgh',
+    online:false
+})
+
+CREATE (U004)-[:SUB {role:'User'}]->(NNDL)
+CREATE (U004)-[:SUB {role:'User'}]->(SMLP)
+
+CREATE (U005:User {
+  	full_name:'Adrien Brody',
+    birthdate:date('2000-04-14'),
+    phone:'+19652970265',
+    corporate_client:false,
+    country:'Algeria',
+    city:'Algeria',
+    online:false
+})
+
+CREATE (U005)-[:SUB {role:'User'}]->(NNDL)
+CREATE (U005)-[:SUB {role:'User'}]->(SMLP)
+CREATE (U005)-[:SUB {role:'User'}]->(CNN)
+
+CREATE (U006:User {
+  	full_name:'Jeffrey Wright',
+    birthdate:date('1999-05-27'),
+    phone:'+15238265826',
+    corporate_client:true,
+    country:'USA',
+    city:'Washington',
+    online:false
+})
+
+CREATE (U006)-[:SUB {role:'User'}]->(CNN)
+
+CREATE (U007:User {
+  	full_name:'Lyna Khoudri',
+    birthdate:date('2001-03-03'),
+    phone:'+158265926492',
+    corporate_client:false,
+    country:'USA',
+    city:'Pittsburgh',
+    online:false
+})
+
+CREATE (U007)-[:SUB {role:'User'}]->(NNDL)
+CREATE (U007)-[:SUB {role:'User'}]->(CNN)

@@ -1,0 +1,31 @@
+CREATE (NNDL:Course {
+	name:'Neural Networks and Deep Learning',
+    duration:4,
+    start_date:datetime('2023-03-20T00:00:00'),
+    end_date:datetime('2023-04-17T00:00:00'),
+    description:'You will be familiar with the significant technological trends driving the rise of deep learning; build, train, and apply fully connected deep neural networks; implement efficient (vectorized) neural networks; identify key parameters in a neural network’s architecture; and apply deep learning to your own applications.',
+    lecturer:'Andrew Ng',
+    price:900
+})
+
+CREATE (SMLP:Course {
+	name:'Structuring Machine Learning Projects',
+    duration:4,
+    start_date:datetime('2023-04-24T00:00:00'),
+    end_date:datetime('2023-05-22T00:00:00'),
+    description:'You will be able to diagnose errors in a machine learning system; prioritize strategies for reducing errors; understand complex ML settings, such as mismatched training/test sets, and comparing to and/or surpassing human-level performance; and apply end-to-end learning, transfer learning, and multi-task learning.',
+    lecturer:'Andrew Ng',
+    price:750
+})
+
+CREATE (CNN:Course {
+	name:'Convolutional Neural Networks',
+    duration:4,
+    start_date:datetime('2023-05-29T00:00:00'),
+    end_date:datetime('2023-06-26T00:00:00'),
+    description:'You will be able to build a convolutional neural network, including recent variations such as residual networks; apply convolutional networks to visual detection and recognition tasks; and use neural style transfer to generate art and apply these algorithms to a variety of image, video, and other 2D or 3D data.',
+    lecturer:'Andrew Ng',
+    price:850
+})
+
+CREATE (Keanu)-[:ACTED_IN {roles:['Neo']}]->(TheMatrix)

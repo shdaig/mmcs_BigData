@@ -1,0 +1,53 @@
+db.courses.aggregate([
+  {
+    $lookup: {
+      from: "users",
+      localField: "course_id",
+      foreignField: "course_id",
+      as: "users"
+    }
+  },
+  {
+    $addFields: {
+      total_clients: { $size: "$users" },
+      physical_clients: {
+        $size: {
+          $filter: {
+            input: "$users",
+            cond: { $eq: ["$$this.corporate_client", false] }
+          }
+        }
+      },
+      corporate_clients: {
+        $size: {
+          $filter: {
+            input: "$users",
+            cond: { $eq: ["$$this.corporate_client", true] }
+          }
+        }
+      }
+    }
+  },
+  {
+    $addFields: {
+      physical_clients_percentage: {
+        $multiply: [ { $divide: [ "$physical_clients", "$total_clients" ] }, 100 ]
+      },
+      corporate_clients_percentage: {
+        $multiply: [ { $divide: [ "$corporate_clients", "$total_clients" ] }, 100 ]
+      }
+    }
+  },
+  {
+    $match: {
+      $expr: { $gt: ["$physical_clients", "$corporate_clients"] }
+    }
+  },
+  {
+    $group: {
+      _id: "$name",
+      percent_of_physical: { $first: "$physical_clients_percentage" },
+      corporate_of_physical: { $first: "$corporate_clients_percentage" }
+    }
+  }
+]);
